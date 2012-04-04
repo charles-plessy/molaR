@@ -1,0 +1,10 @@
+Package: molaR
+Version: 0.1
+Date: 2012-04-04
+Title: Calculate molarity using exported BioAnalyzer data.
+Author: Charles Plessy
+Maintainer: Charles Plessy <plessy@riken.jp>
+Description: Fits the ladder data to a log scale, converts
+ the time data for the sample into sizes, and calculates
+ molarity on a given size range.
+License: TBD

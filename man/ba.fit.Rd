@@ -35,8 +35,8 @@ Charles Plessy, RIKEN Omics Science Center
 \code{\link{read.ba.peaktable}}, \code{\link{read.ba.sample}}
 }
 \examples{
-ladder <- read.clonotypes(system.file("ba.results.csv", package = "molaR"))
-sample1 <- read.clonotypes(system.file("ba.sample1.csv", package = "molaR"))
+ladder <- read.ba.peaktable(system.file("data/ba.results.csv", package = "molaR"))
+sample1 <- read.ba.sample(system.file("data/ba.sample1.csv", package = "molaR"))
 sample1$size <- ba.fit(ladder, sample1)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

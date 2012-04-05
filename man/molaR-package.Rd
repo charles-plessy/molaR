@@ -15,7 +15,7 @@ Charles Plessy, RIKEN Omics Science Center
 }
 \keyword{ package }
 \examples{
-ladder <- read.clonotypes(system.file("ba.results.csv", package = "molaR"))
-sample1 <- read.clonotypes(system.file("ba.sample1.csv", package = "molaR"))
+ladder <- read.ba.peaktable(system.file("data/ba.results.csv", package = "molaR"))
+sample1 <- read.ba.sample(system.file("data/ba.sample1.csv", package = "molaR"))
 sample1$size <- ba.fit(ladder, sample1)
 }

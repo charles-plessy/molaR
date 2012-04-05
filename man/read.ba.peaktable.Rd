@@ -52,8 +52,7 @@ Charles Plessy
 \code{\link{read.ba.sample}}
 }
 \examples{
-
-ladder <- read.clonotypes(system.file("ba.results.csv", package = "molaR"))
+ladder <- read.ba.peaktable(system.file("data/ba.results.csv", package = "molaR"))
 summary(ladder)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

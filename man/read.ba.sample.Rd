@@ -26,6 +26,7 @@ Charles Plessy, RIKEN Omics Science Center
 \code{\link{read.ba.peaktable}}
 }
 \examples{
-sample1 <- read.clonotypes(system.file("ba.sample1.csv", package = "molaR"))
+sample1 <- read.ba.sample(system.file("data/ba.sample1.csv", package = "molaR"))
+sample2 <- read.ba.sample(system.file("data/ba.sample2.csv", package = "molaR"))
 }
 \keyword{ BioAnalyzer }

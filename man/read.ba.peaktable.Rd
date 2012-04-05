@@ -1,11 +1,11 @@
 \name{read.ba.peaktable}
 \alias{read.ba.peaktable}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{
-%%  ~~function to do ... ~~
-}
+\title{Read a peak table from a BioAnalyzer Result CSV file}
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+The BioAnalyzer result CSV files contain multiple "peak tables".  This
+function parses the CSV file for a given sample, by default the Ladder,
+and returns a data frame.
 }
 \usage{
 read.ba.peaktable(CSV, target = "Ladder")
@@ -13,68 +13,49 @@ read.ba.peaktable(CSV, target = "Ladder")
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{CSV}{
-%%     ~~Describe \code{CSV} here~~
+Path to a BioAnalyzer Result CSV file.
 }
   \item{target}{
-%%     ~~Describe \code{target} here~~
+Name of a sample present in that file.  Default: "Ladder".
 }
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
+The file is read once with the readLines() function, the boundaires of the
+peak table are searched, and the file is read once again within these
+boundaries with the scan() function.
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+Data frame with the following columns names.  The original names follow.
+\item{Size}{Size [bp]}
+\item{Conc}Conc. [pg/µl]{}
+\item{Molarity}{Molarity [pmol/l]}
+\item{Observations}{Observations}
+\item{Area}{Area}
+\item{Time}{Aligned Migration Time [s]}
+\item{Peak.Height}{Peak Height}
+\item{Peak.Width}{Peak Width}
+\item{Total.perc}{\% of Total}
+\item{Time.corrected.area}{Time corrected area}
+All columns are numeric type, except "Observations" which is a factor.
+"Lower Marker" and "Upper Marker" indicate the size markers mixed with
+all samples.  In the case of Ladder peak tables, "Ladder Peak" indicates
+the ladder peaks.
 }
 \references{
-%% ~put references to the literature/web site here ~
+See BioAnalyzer's 2100 Expert documentation for more information.
 }
 \author{
-%%  ~~who you are~~
+Charles Plessy
 }
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{\link{read.ba.sample}}
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
 
-## The function is currently defined as
-function (CSV, target = "Ladder") 
-{
-    CSV.lines <- readLines(file(CSV, encoding = "ISO-8859-1"))
-    peaktable.start <- 3 + grep(paste("Sample Name", target, 
-        sep = ","), CSV.lines)
-    peaktable.length <- grep("^ $", CSV.lines[peaktable.start:length(CSV.lines)])[1] - 
-        2
-    peaktable <- scan(CSV, skip = peaktable.start, what = "character", 
-        nlines = peaktable.length, sep = ",")
-    dim(peaktable) <- c(10, peaktable.length)
-    peaktable <- data.frame(t(peaktable), stringsAsFactors = FALSE)
-    colnames(peaktable) <- c("Size", "Conc", "Molarity", "Observations", 
-        "Area", "Time", "Peak.Height", "Peak.Width", "Total.perc", 
-        "Time.corrected.area")
-    removecommas <- function(X) sub(",", "", X)
-    correctcolumn <- function(X) as.numeric(sapply(peaktable[, 
-        X], removecommas))
-    for (column in c("Size", "Conc", "Molarity", "Area", "Time", 
-        "Peak.Height", "Peak.Width", "Total.perc", "Time.corrected.area")) peaktable[, 
-        column] <- correctcolumn(column)
-    peaktable$Observations <- as.factor(peaktable$Observations)
-    return(peaktable)
-  }
+ladder <- read.clonotypes(system.file("ba.results.csv", package = "molaR"))
+summary(ladder)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{ Ladder }

@@ -1,29 +1,21 @@
 \name{molaR-package}
 \alias{molaR-package}
 \docType{package}
-\title{
-~~ package title ~~
-}
+\title{molaR}
 \description{
-~~ A concise (1-5 lines) description of the package ~~
+Load BioAnalyzer size profiles exported in CSV format, and calculate their molarity.
 }
 \details{
-~~ An overview of how to use the package, including the most important ~~
-~~ functions ~~
+The current workflow is 1) load the ladder data with the read.ba.peaktable() function,
+2) load the data for the sample of interest with the read.ba.sample() function and
+3) confert its timepoints into sizes with the ba.fit() function.
 }
 \author{
-~~ The author and/or maintainer of the package ~~
+Charles Plessy, RIKEN Omics Science Center
 }
-\references{
-~~ Literature or other references for background information ~~
-}
-~~ Optionally other standard keywords, one per line, from file KEYWORDS in ~~
-~~ the R documentation directory ~~
 \keyword{ package }
-\seealso{
-~~ Optional links to other man pages, e.g. ~~
-~~ \code{\link[<pkg>:<pkg>-package]{<pkg>}} ~~
-}
 \examples{
-~~ simple examples of the most important functions ~~
+ladder <- read.clonotypes(system.file("ba.results.csv", package = "molaR"))
+sample1 <- read.clonotypes(system.file("ba.sample1.csv", package = "molaR"))
+sample1$size <- ba.fit(ladder, sample1)
 }

@@ -1,7 +1,9 @@
 read.ba.peaktable <- function(CSV, target='Ladder') {
 
 # Find position of the ladder's peak table
-CSV.lines <- readLines(file(CSV, encoding="ISO-8859-1"))
+CSV.file <- file(CSV, encoding="ISO-8859-1")
+CSV.lines <- readLines(CSV.file)
+close(CSV.file)
 peaktable.start  <- 3 + grep(paste('Sample Name', target, sep=','), CSV.lines)
 peaktable.length <- grep("^ $", CSV.lines[peaktable.start:length(CSV.lines)])[1] - 2
 

@@ -1,7 +1,9 @@
 read.ba.sample<- function(CSV) {
 
 # Find start and stop position of the data in the file
-CSV.lines <- readLines(file(CSV, encoding="ISO-8859-1"))
+CSV.file <- file(CSV, encoding="ISO-8859-1")
+CSV.lines <- readLines(CSV.file)
+close(CSV.file)
 timevalue.start  <- grep('Time,Value', CSV.lines)
 timevalue.length <- grep("^ $", CSV.lines[timevalue.start:length(CSV.lines)])[1] - 2
 

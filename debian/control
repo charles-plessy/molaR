@@ -1,0 +1,14 @@
+Source: r-other-molar
+Section: gnu-r
+Priority: optional
+Maintainer: Charles Plessy <plessy@riken.jp>
+Build-Depends: debhelper (>= 9), cdbs, r-base-dev (>= 2.14.2~20120222)
+Standards-Version: 3.9.3
+
+Package: r-other-molar
+Architecture: any
+Depends: ${R:Depends}, ${misc:Depends}
+Description: Calculate molarity in R using BioAnalyzer data.
+ MolaR can load peak tables and fluorescence timecourse, and using
+ the ladder data, convert a sample's timecourse in a size profile
+ by log regression.

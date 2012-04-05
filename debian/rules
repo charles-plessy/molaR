@@ -1,0 +1,7 @@
+#!/usr/bin/make -f
+
+export DH_VERBOSE=1
+
+debRreposname = other
+
+include /usr/share/R/debian/r-cran.mk

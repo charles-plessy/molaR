@@ -1,5 +1,5 @@
-\name{data/ba.sample1.csv}
-\alias{data/ba.sample1.csv}
+\name{data/ba.sample1}
+\alias{data/ba.sample1}
 \docType{data}
 \title{
 BioAnalyzer CSV export of sample data (example 1).

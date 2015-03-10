@@ -27,7 +27,7 @@ boundaries with the scan() function.
 \value{
 Data frame with the following columns names.  The original names follow.
 \item{Size}{Size [bp]}
-\item{Conc}Conc. [pg/µl]{}
+\item{Conc}{Conc. [pg/µl]}
 \item{Molarity}{Molarity [pmol/l]}
 \item{Observations}{Observations}
 \item{Area}{Area}

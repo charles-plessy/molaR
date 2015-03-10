@@ -1,5 +1,5 @@
-\name{data/ba.ladder}
-\alias{data/ba.ladder}
+\name{ba.ladder}
+\alias{ba.ladder}
 \docType{data}
 \title{
 BioAnalyzer CSV exported ladder data.
